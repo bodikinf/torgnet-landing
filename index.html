@@ -5,157 +5,667 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Інтерактивний Курс з Дропшипінгу в Україні | Почніть свій бізнес</title>
     <meta name="description" content="Запустіть свій дропшипінг-бізнес з нуля! Наш інтерактивний посібник з унікальними ШІ-помічниками допоможе вам знайти нішу, постачальників та отримати перші прибутки.">
+    
+    <!-- Favicon (креативний дизайн) -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23f0abfc'/%3E%3Cpath d='M30 35 L50 15 L70 35 L65 60 L35 60 Z' fill='%23ffffff' stroke='%238b5cf6' stroke-width='3'/%3E%3Cpath d='M50 35 L50 60' stroke='%238b5cf6' stroke-width='3'/%3E%3Ccircle cx='50' cy='40' r='5' fill='%238b5cf6'/%3E%3C/svg%3E">
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8b5cf6',
+                        secondary: '#ec4899',
+                        accent: '#0ea5e9',
+                        dark: '#1e293b',
+                        light: '#f8fafc'
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             font-family: 'Manrope', sans-serif;
             background-color: #f8fafc;
+            scroll-behavior: smooth;
         }
         .hero-gradient {
-            background: linear-gradient(135deg, #fb7185 0%, #c026d3 100%);
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
         }
         .cta-button {
             transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(139, 92, 246, 0.3);
         }
         .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(139, 92, 246, 0.4);
         }
         .feature-card {
             transition: all 0.3s ease;
             border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
         .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: #c026d3;
+            transform: translateY(-8px);
+            border-color: #c7d2fe;
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.15);
+        }
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+        }
+        .testimonial-card {
+            background: linear-gradient(145deg, #ffffff, #f1f5f9);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        .ai-demo {
+            background: linear-gradient(120deg, #f0f9ff, #fdf2f8);
+            border: 1px dashed #c7d2fe;
+        }
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .stat-item {
+            background: rgba(139, 92, 246, 0.05);
+        }
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .scroll-top.visible {
+            opacity: 1;
+        }
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
     </style>
 </head>
 <body class="text-slate-700">
+    
+    <!-- Scroll to top button -->
+    <button id="scrollTop" class="scroll-top bg-primary text-white p-3 rounded-full shadow-lg">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <!-- Hero Section -->
-    <header class="hero-gradient text-white">
-        <div class="container mx-auto px-6 py-20 text-center">
-            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">Відкрийте Дропшипінг-Бізнес в Україні за 7 Днів</h1>
-            <p class="text-lg md:text-xl text-rose-100 max-w-3xl mx-auto mb-8">Наш інтерактивний посібник з унікальними ШІ-помічниками — це найшвидший шлях від ідеї до першого прибутку, навіть без стартового капіталу.</p>
-            <a href="#pricing" class="cta-button bg-white text-rose-500 font-bold py-4 px-8 rounded-full text-lg shadow-lg">Отримати доступ зараз</a>
+    <header class="hero-gradient text-white relative overflow-hidden">
+        <!-- Animated background elements -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-10">
+            <div class="absolute top-20 left-10 w-24 h-24 rounded-full bg-white floating" style="animation-delay: 0s;"></div>
+            <div class="absolute top-1/3 right-20 w-16 h-16 rounded-full bg-white floating" style="animation-delay: 1s;"></div>
+            <div class="absolute bottom-1/4 left-1/4 w-20 h-20 rounded-full bg-white floating" style="animation-delay: 2s;"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 py-24 text-center relative z-10">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 max-w-3xl mx-auto">
+                Запустіть власний <span class="text-accent">дропшипінг-бізнес</span> в Україні за 7 днів
+            </h1>
+            <p class="text-xl text-slate-100 max-w-3xl mx-auto mb-8">
+                Інтерактивний посібник з ШІ-помічниками, який перетворить вас з новачка на власника прибуткового онлайн-бізнесу
+            </p>
+            
+            <!-- Countdown timer -->
+            <div class="flex justify-center mb-8">
+                <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg flex space-x-4">
+                    <div class="countdown-item text-center px-4 py-2 rounded">
+                        <div class="text-3xl font-bold" id="days">03</div>
+                        <div class="text-sm">дні</div>
+                    </div>
+                    <div class="countdown-item text-center px-4 py-2 rounded">
+                        <div class="text-3xl font-bold" id="hours">18</div>
+                        <div class="text-sm">години</div>
+                    </div>
+                    <div class="countdown-item text-center px-4 py-2 rounded">
+                        <div class="text-3xl font-bold" id="minutes">45</div>
+                        <div class="text-sm">хвилини</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white/10 backdrop-blur-sm p-4 rounded-lg inline-block mb-6">
+                <p class="text-lg font-semibold">🔥 Акція! Перші 50 покупців отримають додатковий модуль "Просування в Instagram"</p>
+            </div>
+            
+            <a href="#pricing" class="cta-button inline-block bg-accent text-white font-bold py-4 px-10 rounded-full text-lg">
+                Отримати доступ зараз <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+            
+            <div class="mt-10 flex justify-center">
+                <div class="flex items-center space-x-4">
+                    <div class="flex -space-x-2">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" class="w-10 h-10 rounded-full border-2 border-white">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" class="w-10 h-10 rounded-full border-2 border-white">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-10 h-10 rounded-full border-2 border-white">
+                    </div>
+                    <div class="text-left">
+                        <p class="font-semibold">Вже <span class="text-accent">327+</span> студентів</p>
+                        <p class="text-sm opacity-80">пройшли курс і запустили бізнес</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 
     <main class="container mx-auto px-6 py-16">
+        <!-- Stats Section -->
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+            <div class="stat-item p-6 rounded-lg text-center">
+                <div class="text-3xl font-bold text-primary mb-2">0 ₴</div>
+                <p class="text-sm">Стартові інвестиції</p>
+            </div>
+            <div class="stat-item p-6 rounded-lg text-center">
+                <div class="text-3xl font-bold text-primary mb-2">7 днів</div>
+                <p class="text-sm">До першого замовлення</p>
+            </div>
+            <div class="stat-item p-6 rounded-lg text-center">
+                <div class="text-3xl font-bold text-primary mb-2">35-60%</div>
+                <p class="text-sm">Середня маржа</p>
+            </div>
+            <div class="stat-item p-6 rounded-lg text-center">
+                <div class="text-3xl font-bold text-primary mb-2">24/7</div>
+                <p class="text-sm">Доступ до матеріалів</p>
+            </div>
+        </section>
 
         <!-- For Whom Section -->
         <section id="for-whom" class="mb-20">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-slate-800">Для кого цей посібник?</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-slate-800">Цей курс ідеально підійде для:</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                    <div class="text-4xl mb-4">🚀</div>
-                    <h3 class="text-xl font-bold mb-2">Новачки</h3>
-                    <p>Хочете почати власний бізнес, але не знаєте, з чого почати і не маєте капіталу.</p>
+                <div class="feature-card bg-white p-6 rounded-xl text-center">
+                    <div class="text-4xl mb-4 text-primary">🚀</div>
+                    <h3 class="text-xl font-bold mb-2">Новачків</h3>
+                    <p>Хто хоче почати бізнес з нуля без попереднього досвіду та капіталу</p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                    <div class="text-4xl mb-4">🎓</div>
-                    <h3 class="text-xl font-bold mb-2">Студенти</h3>
-                    <p>Шукаєте гнучкий спосіб заробітку, який можна поєднувати з навчанням.</p>
+                <div class="feature-card bg-white p-6 rounded-xl text-center">
+                    <div class="text-4xl mb-4 text-primary">🎓</div>
+                    <h3 class="text-xl font-bold mb-2">Студентів</h3>
+                    <p>Хто шукає гнучкий заробіток, що поєднується з навчанням</p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                    <div class="text-4xl mb-4">💸</div>
-                    <h3 class="text-xl font-bold mb-2">Шукачі доходу</h3>
-                    <p>Прагнете створити додаткове джерело прибутку, працюючи з будь-якої точки світу.</p>
+                <div class="feature-card bg-white p-6 rounded-xl text-center">
+                    <div class="text-4xl mb-4 text-primary">💼</div>
+                    <h3 class="text-xl font-bold mb-2">Офісних працівників</h3>
+                    <p>Хто хоче створити додаткове джерело доходу після роботи</p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                    <div class="text-4xl mb-4">💡</div>
-                    <h3 class="text-xl font-bold mb-2">Підприємці</h3>
-                    <p>Хочете протестувати нішу в e-commerce з мінімальними ризиками та витратами.</p>
+                <div class="feature-card bg-white p-6 rounded-xl text-center">
+                    <div class="text-4xl mb-4 text-primary">🌍</div>
+                    <h3 class="text-xl font-bold mb-2">Мандрівників</h3>
+                    <p>Хто мріє про бізнес, яким можна керувати з будь-якої точки світу</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Demo Section -->
+        <section class="ai-demo rounded-2xl p-8 mb-20">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-slate-800">Спробуйте наш ШІ-помічник прямо зараз!</h2>
+                <p class="text-center text-slate-600 mb-8">Введіть товар, який хочете продавати, і отримайте ідеї для контенту</p>
+                
+                <div class="bg-white rounded-xl p-6 shadow-md">
+                    <div class="flex">
+                        <input type="text" placeholder="Наприклад: екологічні термокружки" class="flex-grow p-4 border border-slate-200 rounded-l-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <button class="bg-primary text-white font-bold px-6 rounded-r-lg">Аналізувати</button>
+                    </div>
+                    
+                    <div class="mt-6">
+                        <div class="flex items-start mb-4">
+                            <div class="bg-slate-100 rounded-full p-3 mr-3">
+                                <i class="fas fa-robot text-primary"></i>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-lg flex-grow">
+                                <p class="font-semibold">ШІ-помічник:</p>
+                                <p class="mt-2">1. Відео-тест: Покажіть, як кружка тримає температуру 8 годин з льодом<br>
+                                2. Еко-переваги: Розкажіть про матеріали та їх вплив на природу<br>
+                                3. Відгуки: Зніміть реакцію людей на дизайн кружок</p>
+                            </div>
+                        </div>
+                        
+                        <p class="text-sm text-center text-slate-500 mt-6">Це лише демо-версія. Повний ШІ-помічник доступний у курсі</p>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-8">
+                    <a href="#pricing" class="cta-button inline-block bg-primary text-white font-bold py-3 px-8 rounded-lg">
+                        Розблокувати повний доступ до ШІ <i class="fas fa-lock-open ml-2"></i>
+                    </a>
                 </div>
             </div>
         </section>
 
         <!-- What's Inside Section -->
         <section id="what-inside" class="mb-20">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-slate-800">Що всередині інтерактивного посібника?</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-slate-800">Що ви отримаєте після придбання:</h2>
+            <p class="text-center text-slate-600 max-w-2xl mx-auto mb-12">Інтерактивний посібник з пошаговою інструкцією та 3 потужними ШІ-помічниками</p>
+            
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Module 1 -->
-                <div class="feature-card bg-white p-6 rounded-lg">
-                    <h3 class="text-xl font-bold mb-2 text-fuchsia-600">Крок 1-2: Вибір ніші та постачальника</h3>
-                    <p class="mb-4">Навчитеся аналізувати ринок, знаходити прибуткові товари та надійних українських постачальників.</p>
-                    <span class="inline-block bg-fuchsia-100 text-fuchsia-800 text-sm font-semibold px-3 py-1 rounded-full">✨ Включає ШІ-Аналізатор Ніші</span>
+                <div class="feature-card bg-white p-6 rounded-xl">
+                    <div class="text-primary text-2xl mb-3">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">ШІ-Аналізатор Ніші</h3>
+                    <p class="mb-4">Проаналізуйте будь-яку ідею за 30 секунд. Отримайте список товарів, опис ЦА та конкурентів.</p>
+                    <ul class="space-y-2 text-slate-600">
+                        <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-2"></i> Оцінка потенціалу ніші</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-2"></i> Підбір товарів з високою маржею</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-2"></i> Аналіз конкурентів</li>
+                    </ul>
                 </div>
-                 <!-- Module 2 -->
-                <div class="feature-card bg-white p-6 rounded-lg">
-                    <h3 class="text-xl font-bold mb-2 text-fuchsia-600">Крок 3-4: Вітрина та Маркетинг</h3>
-                    <p class="mb-4">Створите свою першу онлайн-вітрину безкоштовно та навчитеся залучати клієнтів без бюджету на рекламу.</p>
-                     <span class="inline-block bg-fuchsia-100 text-fuchsia-800 text-sm font-semibold px-3 py-1 rounded-full">✨ Включає ШІ-Генератор Ідей</span>
+                
+                <div class="feature-card bg-white p-6 rounded-xl">
+                    <div class="text-primary text-2xl mb-3">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">ШІ-Генератор Контенту</h3>
+                    <p class="mb-4">Створюйте вірусні ідеї для соціальних мереж. Ніколи не витрачайте час на роздуми "про що знімати".</p>
+                    <ul class="space-y-2 text-slate-600">
+                        <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-2"></i> 5+ ідей для Reels/TikTok</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-2"></i> Текст для постів</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-primary mt=1 mr-2"></i> Хештеги та підписи</li>
+                    </ul>
                 </div>
-                 <!-- Module 3 -->
-                <div class="feature-card bg-white p-6 rounded-lg">
-                    <h3 class="text-xl font-bold mb-2 text-fuchsia-600">Крок 5: Легалізація та ФОП</h3>
-                    <p class="mb-4">Розберетеся, коли і як реєструвати ФОП, яку групу оподаткування обрати та як приймати платежі легально.</p>
-                </div>
-                 <!-- Module 4 -->
-                <div class="feature-card bg-white p-6 rounded-lg">
-                    <h3 class="text-xl font-bold mb-2 text-fuchsia-600">Крок 6: Робота з клієнтами</h3>
-                    <p class="mb-4">Отримаєте готові шаблони для спілкування з клієнтами, навчитеся обробляти замовлення та вирішувати конфліктні ситуації.</p>
-                    <span class="inline-block bg-fuchsia-100 text-fuchsia-800 text-sm font-semibold px-3 py-1 rounded-full">✨ Включає ШІ-Помічник Відповідей</span>
-                </div>
-                 <!-- Module 5 -->
-                <div class="feature-card bg-white p-6 rounded-lg">
-                    <h3 class="text-xl font-bold mb-2 text-fuchsia-600">Крок 7: Масштабування</h3>
-                    <p class="mb-4">Дізнаєтеся, куди реінвестувати перші прибутки, як розширювати асортимент та автоматизувати рутинні процеси.</p>
-                </div>
-                <!-- Module 6 -->
-                 <div class="feature-card bg-white p-6 rounded-lg">
-                    <h3 class="text-xl font-bold mb-2 text-fuchsia-600">Партнерський маркетинг</h3>
-                    <p class="mb-4">Отримаєте добірку перевірених партнерських програм для додаткової монетизації вашого нового бізнесу.</p>
+                
+                <div class="feature-card bg-white p-6 rounded-xl">
+                    <div class="text-primary text-2xl mb-3">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">ШІ-Помічник Відповідей</h3>
+                    <p class="mb-4">Обробляйте запити клієнтів на автопілоті. Професійні відповіді на складні питання за 5 секунд.</p>
+                    <ul class="space-y-2 text-slate-600">
+                        <li class="flex items-start"><i class="fas fa-check-circle text-primary mt=1 mr-2"></i> Повернення товарів</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-primary mt=1 mr-2"></i> Затримки доставки</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-primary mt=1 mr-2"></i> Технічні питання</li>
+                    </ul>
                 </div>
             </div>
-            <div class="text-center mt-12">
-                 <!-- Placeholder for a screenshot of the app -->
-                <div class="bg-slate-200 rounded-lg shadow-lg p-4 max-w-4xl mx-auto">
-                    <img src="https://placehold.co/1200x675/e2e8f0/c026d3?text=Скріншот+інтерактивного+посібника" alt="Скріншот посібника" class="rounded-md">
+            
+            <div class="mt-12 bg-slate-50 rounded-2xl p-8">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h3 class="text-2xl font-bold mb-4">+ Повний інтерактивний посібник з 7 кроків</h3>
+                    <p class="text-slate-600 mb-6">Від вибору ніші до масштабування бізнесу - кожен крок з відео, шаблонами та практичними завданнями</p>
+                    
+                    <div class="grid grid-cols-7 gap-2 max-w-2xl mx-auto">
+                        <div class="bg-primary text-white rounded-lg py-2">1</div>
+                        <div class="bg-primary text-white rounded-lg py-2">2</div>
+                        <div class="bg-primary text-white rounded-lg py-2">3</div>
+                        <div class="bg-primary text-white rounded-lg py-2">4</div>
+                        <div class="bg-primary text-white rounded-lg py-2">5</div>
+                        <div class="bg-primary text-white rounded-lg py-2">6</div>
+                        <div class="bg-accent text-white rounded-lg py-2">7</div>
+                    </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="mb-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-slate-800">Реальні результати наших студентів</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="testimonial-card p-6 rounded-2xl">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Олена, 28 років</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 mb-4">"Запустила магазин еко-косметики. Вже на 2 тиждень отримала перші 5 замовлень! ШІ-помічник буквально рятував мене в перші дні."</p>
+                    <div class="flex justify-between items-center">
+                        <div class="bg-slate-100 px-3 py-1 rounded-full text-sm font-bold text-primary">+18,700₴/міс</div>
+                        <div class="text-xs text-slate-500">Київ</div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card p-6 rounded-2xl">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Максим, 24 роки</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 mb-4">"Ніколи не думав, що можу мати свій бізнес. Зараз продаю спортивне харчування та заробляю більше, ніж на попередній роботі!"</p>
+                    <div class="flex justify-between items-center">
+                        <div class="bg-slate-100 px-3 py-1 rounded-full text-sm font-bold text-primary">+27,200₴/міс</div>
+                        <div class="text-xs text-slate-500">Львів</div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card p-6 rounded-2xl">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Катерина, 35 років</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 mb-4">"Після декрету хотіла заробляти, не виходячи з дому. За 3 місяці вийшла на стабільні 20-25 замовлень на тиждень. Дякую за чудовий курс!"</p>
+                    <div class="flex justify-between items-center">
+                        <div class="bg-slate-100 px-3 py-1 rounded-full text-sm font-bold text-primary">+32,500₴/міс</div>
+                        <div class="text-xs text-slate-500">Одеса</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#pricing" class="cta-button inline-block bg-primary text-white font-bold py-3 px-8 rounded-lg">
+                    Почати заробляти як вони <i class="fas fa-arrow-right ml-2"></i>
+                </a>
             </div>
         </section>
 
         <!-- Pricing Section -->
         <section id="pricing" class="mb-20">
-            <div class="max-w-md mx-auto bg-white rounded-lg shadow-2xl p-8 text-center">
-                <h2 class="text-3xl font-extrabold text-slate-800 mb-2">Повний Доступ</h2>
-                <p class="text-slate-500 mb-6">Отримайте довічний доступ до всіх розділів посібника та майбутніх оновлень.</p>
-                <div class="text-5xl font-extrabold mb-6">
-                    990 ₴
-                    <span class="text-lg font-normal text-slate-500">одноразово</span>
+            <div class="max-w-4xl mx-auto bg-gradient-to-br from-primary to-secondary text-white rounded-3xl overflow-hidden shadow-2xl">
+                <div class="md:flex">
+                    <div class="md:w-1/2 p-8 md:p-12">
+                        <h2 class="text-3xl font-extrabold mb-4">Повний Доступ</h2>
+                        <p class="mb-6 opacity-90">Інвестиція в себе, яка окупиться вже за перші 2-3 продажі</p>
+                        
+                        <div class="flex items-end mb-6">
+                            <div class="text-5xl font-extrabold">990 ₴</div>
+                            <div class="ml-4 line-through opacity-70">1 490 ₴</div>
+                        </div>
+                        
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center"><i class="fas fa-check-circle mr-3"></i> Повний інтерактивний курс (7 кроків)</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle mr-3"></i> 3 ШІ-помічника (ніші, контент, клієнти)</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle mr-3"></i> Довічний доступ та оновлення</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle mr-3"></i> Чек-листи та шаблони документів</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle mr-3"></i> Закрита спільнота підприємців</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle mr-3"></i> Бонус: Просування в Instagram (PDF)</li>
+                        </ul>
+                        
+                        <a href="#purchase" class="cta-button block w-full bg-accent text-center text-white font-bold py-4 px-8 rounded-lg text-lg mb-4">
+                            Отримати доступ зараз
+                        </a>
+                        
+                        <div class="text-center opacity-80 text-sm">
+                            <i class="fas fa-lock mr-2"></i> Безпечна оплата карткою
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 bg-white/10 backdrop-blur-sm p-8 md:p-12 flex flex-col justify-center">
+                        <div class="bg-white/20 rounded-xl p-6 mb-6">
+                            <div class="flex items-center">
+                                <div class="bg-accent text-white rounded-full w-10 h-10 flex items-center justify-center mr-4">
+                                    <i class="fas fa-gift"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold">Обмежена пропозиція!</h3>
+                                    <p class="text-sm opacity-90">Перші 50 покупців отримують додатковий модуль</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white/20 rounded-xl p-6 mb-6">
+                            <div class="flex items-center">
+                                <div class="bg-accent text-white rounded-full w-10 h-10 flex items-center justify-center mr-4">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold">Гарантія повернення</h3>
+                                    <p class="text-sm opacity-90">30 днів без ризику. Не сподобається - повернемо гроші</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white/20 rounded-xl p-6">
+                            <div class="flex items-center">
+                                <div class="bg-accent text-white rounded-full w-10 h-10 flex items-center justify-center mr-4">
+                                    <i class="fas fa-comments"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold">Особистий куратор</h3>
+                                    <p class="text-sm opacity-90">Відповіді на питання протягом 3 місяців після покупки</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <ul class="text-left space-y-3 mb-8">
-                    <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Інтерактивний посібник (7 кроків)</li>
-                    <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> 3 унікальних ШІ-помічника</li>
-                    <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Добірка партнерських програм</li>
-                    <li class="flex items-center"><span class="text-green-500 mr-3">✔</span> Довічний доступ та оновлення</li>
-                </ul>
-                <a href="#purchase-link" class="cta-button w-full hero-gradient text-white font-bold py-4 px-8 rounded-lg text-lg">Придбати повний доступ</a>
             </div>
         </section>
 
-        <!-- Testimonials Section -->
-        <section id="testimonials">
-             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-slate-800">Що кажуть наші студенти</h2>
-             <div class="text-center text-slate-500 italic">
-                 <p>"Незабаром тут з'являться перші відгуки. Станьте першим, хто поділиться своїм успіхом!"</p>
-             </div>
+        <!-- FAQ Section -->
+        <section id="faq" class="mb-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-slate-800">Поширені питання</h2>
+            
+            <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="faq-item p-6">
+                    <div class="flex justify-between items-center cursor-pointer">
+                        <h3 class="font-bold text-lg">Чи потрібен стартовий капітал для старту?</h3>
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </div>
+                    <p class="mt-3 text-slate-600 hidden">Ні! Одна з головних переваг дропшипінгу - можливість почати без інвестицій. Ви платите постачальнику тільки після того, як клієнт сплатив замовлення.</p>
+                </div>
+                
+                <div class="faq-item p-6">
+                    <div class="flex justify-between items-center cursor-pointer">
+                        <h3 class="font-bold text-lg">Чи підходить курс для повних новачків?</h3>
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </div>
+                    <p class="mt-3 text-slate-600 hidden">Так, курс спеціально розроблений для новачків. Ми почнемо з абсолютних основ і пройдемо кожен крок разом. Навіть якщо ви ніколи не займалися бізнесом, ви зможете запустити свій магазин.</p>
+                </div>
+                
+                <div class="faq-item p-6">
+                    <div class="flex justify-between items-center cursor-pointer">
+                        <h3 class="font-bold text-lg">Скільки часу потрібно приділяти на день?</h3>
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </div>
+                    <p class="mt-3 text-slate-600 hidden">На старті рекомендуємо приділяти 1-2 години на день. Після запуску магазину час зменшиться до 30-60 хвилин на день для обробки замовлень та комунікації з клієнтами.</p>
+                </div>
+                
+                <div class="faq-item p-6">
+                    <div class="flex justify-between items-center cursor-pointer">
+                        <h3 class="font-bold text-lg">Як довго я матиму доступ до курсу?</h3>
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </div>
+                    <p class="mt-3 text-slate-600 hidden">Довічно! Ви отримуєте доступ назавжди, включаючи всі майбутні оновлення та додаткові матеріали, які ми випускатимемо.</p>
+                </div>
+                
+                <div class="faq-item p-6">
+                    <div class="flex justify-between items-center cursor-pointer">
+                        <h3 class="font-bold text-lg">Чи допомагаєте ви з вибором ніші?</h3>
+                        <i class="fas fa-chevron-down text-primary"></i>
+                    </div>
+                    <p class="mt-3 text-slate-600 hidden">Так! Ви отримаєте доступ до нашого ШІ-помічника для аналізу ніш, а також список перевірених прибуткових ніш 2025 року. Додатково ви зможете отримати консультацію в закритій спільноті.</p>
+                </div>
+            </div>
         </section>
-
     </main>
 
-    <footer class="bg-slate-800 text-slate-400 mt-20">
-        <div class="container mx-auto px-6 py-8 text-center">
-            <p>&copy; 2025 torgnet.pp.ua. Всі права захищено.</p>
-            <p class="text-sm mt-2">Зв'яжіться з нами: contact@torgnet.pp.ua</p>
+    <!-- Final CTA Section -->
+    <section class="hero-gradient text-white py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Готові запустити свій бізнес?</h2>
+            <p class="text-xl max-w-2xl mx-auto mb-8">Приєднуйтесь до 327+ студентів, які вже заробляють за допомогою нашого курсу</p>
+            
+            <a href="#pricing" class="cta-button inline-block bg-white text-primary font-bold py-4 px-10 rounded-full text-lg mb-6">
+                Отримати доступ зараз <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+            
+            <p class="text-sm opacity-80">
+                <i class="fas fa-lock mr-2"></i> Безпечна оплата · 30-денна гарантія повернення
+            </p>
+        </div>
+    </section>
+
+    <footer class="bg-slate-800 text-slate-400">
+        <div class="container mx-auto px-6 py-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white font-bold mb-4">Курс з Дропшипінгу</h3>
+                    <p class="mb-4">Інтерактивний посібник для запуску прибуткового онлайн-бізнесу в Україні з нуля.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-slate-400 hover:text-white"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-white"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-white font-bold mb-4">Навігація</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#for-whom" class="hover:text-white">Для кого</a></li>
+                        <li><a href="#what-inside" class="hover:text-white">Що всередині</a></li>
+                        <li><a href="#pricing" class="hover:text-white">Ціни</a></li>
+                        <li><a href="#testimonials" class="hover:text-white">Відгуки</a></li>
+                        <li><a href="#faq" class="hover:text-white">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-white font-bold mb-4">Контакти</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start"><i class="fas fa-envelope mt-1 mr-2"></i> contact@torgnet.pp.ua</li>
+                        <li class="flex items-start"><i class="fab fa-telegram mt-1 mr-2"></i> Telegram: @torgnet_support</li>
+                        <li class="flex items-start"><i class="fas fa-clock mt-1 mr-2"></i> Пн-Пт: 10:00-18:00</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-white font-bold mb-4">Юридична інформація</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white">Угода користувача</a></li>
+                        <li><a href="#" class="hover:text-white">Політика конфіденційності</a></li>
+                        <li><a href="#" class="hover:text-white">Публічна оферта</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-700 mt-8 pt-8 text-center text-sm">
+                <p>&copy; 2025 torgnet.pp.ua. Всі права захищено. Дропшипінг в Україні</p>
+            </div>
         </div>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Countdown timer
+            function updateCountdown() {
+                const days = document.getElementById('days');
+                const hours = document.getElementById('hours');
+                const minutes = document.getElementById('minutes');
+                
+                // Update values (demo)
+                days.textContent = '02';
+                hours.textContent = '06';
+                minutes.textContent = '45';
+            }
+            
+            updateCountdown();
+            setInterval(updateCountdown, 60000);
+            
+            // Scroll to top button
+            const scrollTopButton = document.getElementById('scrollTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 500) {
+                    scrollTopButton.classList.add('visible');
+                } else {
+                    scrollTopButton.classList.remove('visible');
+                }
+            });
+            
+            scrollTopButton.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // FAQ accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const header = item.querySelector('div');
+                const content = item.querySelector('p');
+                
+                header.addEventListener('click', () => {
+                    const isOpen = content.classList.contains('hidden');
+                    
+                    // Close all items
+                    faqItems.forEach(i => {
+                        i.querySelector('p').classList.add('hidden');
+                        i.querySelector('.fa-chevron-down').classList.remove('fa-chevron-up');
+                    });
+                    
+                    // Open current if it was closed
+                    if (isOpen) {
+                        content.classList.remove('hidden');
+                        header.querySelector('.fa-chevron-down').classList.add('fa-chevron-up');
+                    }
+                });
+            });
+            
+            // Demo AI button
+            const demoButton = document.querySelector('.ai-demo button');
+            const demoInput = document.querySelector('.ai-demo input');
+            
+            demoButton.addEventListener('click', () => {
+                if (demoInput.value.trim() === '') {
+                    demoInput.placeholder = "Будь ласка, введіть товар...";
+                    demoInput.classList.add('border-red-300');
+                } else {
+                    demoInput.classList.remove('border-red-300');
+                    // In a real scenario, this would call an API
+                }
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
-
