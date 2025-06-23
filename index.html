@@ -6,7 +6,6 @@
     <title>Інтерактивний Курс з Дропшипінгу в Україні | Почніть свій бізнес</title>
     <meta name="description" content="Запустіть свій дропшипінг-бізнес з нуля! Наш інтерактивний посібник з унікальними ШІ-помічниками допоможе вам знайти нішу, постачальників та отримати перші прибутки.">
     
-    <!-- Favicon (креативний дизайн) -->
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23f0abfc'/%3E%3Cpath d='M30 35 L50 15 L70 35 L65 60 L35 60 Z' fill='%23ffffff' stroke='%238b5cf6' stroke-width='3'/%3E%3Cpath d='M50 35 L50 60' stroke='%238b5cf6' stroke-width='3'/%3E%3Ccircle cx='50' cy='40' r='5' fill='%238b5cf6'/%3E%3C/svg%3E">
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -160,9 +159,9 @@
             <div class="mt-10 flex justify-center">
                 <div class="flex items-center space-x-4">
                     <div class="flex -space-x-2">
-                        <img src="https://randomuser.me/api/portraits/women/32.jpg" class="w-10 h-10 rounded-full border-2 border-white">
-                        <img src="https://randomuser.me/api/portraits/men/22.jpg" class="w-10 h-10 rounded-full border-2 border-white">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-10 h-10 rounded-full border-2 border-white">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" class="w-10 h-10 rounded-full border-2 border-white" alt="student photo">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" class="w-10 h-10 rounded-full border-2 border-white" alt="student photo">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-10 h-10 rounded-full border-2 border-white" alt="student photo">
                     </div>
                     <div class="text-left">
                         <p class="font-semibold">Вже <span class="text-accent">327+</span> студентів</p>
@@ -198,23 +197,32 @@
         <section id="for-whom" class="mb-20">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-slate-800">Цей курс ідеально підійде для:</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- ВИПРАВЛЕННЯ 1: Заміна іконки ракети на коробку -->
                 <div class="feature-card bg-white p-6 rounded-xl text-center">
-                    <div class="text-4xl mb-4 text-primary">🚀</div>
+                    <div class="text-4xl mb-4 text-primary">
+                        <i class="fas fa-box-open"></i>
+                    </div>
                     <h3 class="text-xl font-bold mb-2">Новачків</h3>
                     <p>Хто хоче почати бізнес з нуля без попереднього досвіду та капіталу</p>
                 </div>
                 <div class="feature-card bg-white p-6 rounded-xl text-center">
-                    <div class="text-4xl mb-4 text-primary">🎓</div>
+                    <div class="text-4xl mb-4 text-primary">
+                         <i class="fas fa-user-graduate"></i>
+                    </div>
                     <h3 class="text-xl font-bold mb-2">Студентів</h3>
                     <p>Хто шукає гнучкий заробіток, що поєднується з навчанням</p>
                 </div>
                 <div class="feature-card bg-white p-6 rounded-xl text-center">
-                    <div class="text-4xl mb-4 text-primary">💼</div>
+                    <div class="text-4xl mb-4 text-primary">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
                     <h3 class="text-xl font-bold mb-2">Офісних працівників</h3>
                     <p>Хто хоче створити додаткове джерело доходу після роботи</p>
                 </div>
                 <div class="feature-card bg-white p-6 rounded-xl text-center">
-                    <div class="text-4xl mb-4 text-primary">🌍</div>
+                    <div class="text-4xl mb-4 text-primary">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
                     <h3 class="text-xl font-bold mb-2">Мандрівників</h3>
                     <p>Хто мріє про бізнес, яким можна керувати з будь-якої точки світу</p>
                 </div>
@@ -304,19 +312,17 @@
                 </div>
             </div>
             
+            <!-- ВИПРАВЛЕННЯ 2: Заміна 7 кроків на 4 кроки -->
             <div class="mt-12 bg-slate-50 rounded-2xl p-8">
                 <div class="max-w-4xl mx-auto text-center">
-                    <h3 class="text-2xl font-bold mb-4">+ Повний інтерактивний посібник з 7 кроків</h3>
+                    <h3 class="text-2xl font-bold mb-4">+ Повний інтерактивний посібник з 4 кроків</h3>
                     <p class="text-slate-600 mb-6">Від вибору ніші до масштабування бізнесу - кожен крок з відео, шаблонами та практичними завданнями</p>
                     
-                    <div class="grid grid-cols-7 gap-2 max-w-2xl mx-auto">
-                        <div class="bg-primary text-white rounded-lg py-2">1</div>
-                        <div class="bg-primary text-white rounded-lg py-2">2</div>
-                        <div class="bg-primary text-white rounded-lg py-2">3</div>
-                        <div class="bg-primary text-white rounded-lg py-2">4</div>
-                        <div class="bg-primary text-white rounded-lg py-2">5</div>
-                        <div class="bg-primary text-white rounded-lg py-2">6</div>
-                        <div class="bg-accent text-white rounded-lg py-2">7</div>
+                    <div class="grid grid-cols-4 gap-4 max-w-md mx-auto">
+                        <div class="bg-primary text-white rounded-lg py-3 font-bold">1</div>
+                        <div class="bg-primary text-white rounded-lg py-3 font-bold">2</div>
+                        <div class="bg-primary text-white rounded-lg py-3 font-bold">3</div>
+                        <div class="bg-accent text-white rounded-lg py-3 font-bold">4</div>
                     </div>
                 </div>
             </div>
@@ -329,15 +335,11 @@
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="testimonial-card p-6 rounded-2xl">
                     <div class="flex items-center mb-4">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-12 h-12 rounded-full mr-4">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-12 h-12 rounded-full mr-4" alt="testimonial photo">
                         <div>
                             <h4 class="font-bold">Олена, 28 років</h4>
                             <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                             </div>
                         </div>
                     </div>
@@ -350,15 +352,11 @@
                 
                 <div class="testimonial-card p-6 rounded-2xl">
                     <div class="flex items-center mb-4">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-12 h-12 rounded-full mr-4">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-12 h-12 rounded-full mr-4" alt="testimonial photo">
                         <div>
                             <h4 class="font-bold">Максим, 24 роки</h4>
                             <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                             </div>
                         </div>
                     </div>
@@ -371,15 +369,11 @@
                 
                 <div class="testimonial-card p-6 rounded-2xl">
                     <div class="flex items-center mb-4">
-                        <img src="https://randomuser.me/api/portraits/women/68.jpg" class="w-12 h-12 rounded-full mr-4">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" class="w-12 h-12 rounded-full mr-4" alt="testimonial photo">
                         <div>
                             <h4 class="font-bold">Катерина, 35 років</h4>
                             <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                             </div>
                         </div>
                     </div>
@@ -412,12 +406,12 @@
                         </div>
                         
                         <ul class="space-y-3 mb-8">
-                            <li class="flex items-center"><i class="fas fa-check-circle mr-3"></i> Повний інтерактивний курс (7 кроків)</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle mr-3"></i> Повний інтерактивний курс (4 кроки)</li>
                             <li class="flex items-center"><i class="fas fa-check-circle mr-3"></i> 3 ШІ-помічника (ніші, контент, клієнти)</li>
                             <li class="flex items-center"><i class="fas fa-check-circle mr-3"></i> Довічний доступ та оновлення</li>
                             <li class="flex items-center"><i class="fas fa-check-circle mr-3"></i> Чек-листи та шаблони документів</li>
                             <li class="flex items-center"><i class="fas fa-check-circle mr-3"></i> Закрита спільнота підприємців</li>
-                            <li class="flex items-center"><i class="fas fa-check-circle mr-3"></i> Бонус: Просування в Instagram (PDF)</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle mr-3"></i> Бонус: Просування в Instagram</li>
                         </ul>
                         
                         <a href="#purchase" class="cta-button block w-full bg-accent text-center text-white font-bold py-4 px-8 rounded-lg text-lg mb-4">
@@ -591,9 +585,11 @@
                 const minutes = document.getElementById('minutes');
                 
                 // Update values (demo)
-                days.textContent = '02';
-                hours.textContent = '06';
-                minutes.textContent = '45';
+                if(days && hours && minutes) {
+                    days.textContent = '02';
+                    hours.textContent = '06';
+                    minutes.textContent = '45';
+                }
             }
             
             updateCountdown();
@@ -620,6 +616,7 @@
             faqItems.forEach(item => {
                 const header = item.querySelector('div');
                 const content = item.querySelector('p');
+                const icon = header.querySelector('i');
                 
                 header.addEventListener('click', () => {
                     const isOpen = content.classList.contains('hidden');
@@ -627,13 +624,15 @@
                     // Close all items
                     faqItems.forEach(i => {
                         i.querySelector('p').classList.add('hidden');
-                        i.querySelector('.fa-chevron-down').classList.remove('fa-chevron-up');
+                        i.querySelector('i').classList.remove('fa-chevron-up');
+                        i.querySelector('i').classList.add('fa-chevron-down');
                     });
                     
                     // Open current if it was closed
                     if (isOpen) {
                         content.classList.remove('hidden');
-                        header.querySelector('.fa-chevron-down').classList.add('fa-chevron-up');
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
                     }
                 });
             });
@@ -642,15 +641,17 @@
             const demoButton = document.querySelector('.ai-demo button');
             const demoInput = document.querySelector('.ai-demo input');
             
-            demoButton.addEventListener('click', () => {
-                if (demoInput.value.trim() === '') {
-                    demoInput.placeholder = "Будь ласка, введіть товар...";
-                    demoInput.classList.add('border-red-300');
-                } else {
-                    demoInput.classList.remove('border-red-300');
-                    // In a real scenario, this would call an API
-                }
-            });
+            if(demoButton && demoInput) {
+                demoButton.addEventListener('click', () => {
+                    if (demoInput.value.trim() === '') {
+                        demoInput.placeholder = "Будь ласка, введіть товар...";
+                        demoInput.classList.add('border-red-300');
+                    } else {
+                        demoInput.classList.remove('border-red-300');
+                        // In a real scenario, this would call an API
+                    }
+                });
+            }
             
             // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
