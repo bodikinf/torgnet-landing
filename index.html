@@ -22,7 +22,8 @@
                     },
                     animation: {
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'float': 'float 6s ease-in-out infinite'
+                        'float': 'float 6s ease-in-out infinite',
+                        'spin-slow': 'spin 2s linear infinite'
                     },
                     keyframes: {
                         float: {
@@ -92,10 +93,12 @@
             right: 30px;
             z-index: 100;
             opacity: 0;
+            visibility: hidden;
             transition: all 0.3s ease;
         }
         .scroll-top.visible {
             opacity: 1;
+            visibility: visible;
         }
         .floating {
             animation: float 6s ease-in-out infinite;
@@ -108,14 +111,11 @@
 </head>
 <body class="text-slate-700">
     
-    <!-- Scroll to top button -->
     <button id="scrollTop" class="scroll-top bg-primary text-white p-3 rounded-full shadow-lg">
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- Hero Section -->
     <header class="hero-gradient text-white relative overflow-hidden">
-        <!-- Animated background elements -->
         <div class="absolute top-0 left-0 w-full h-full opacity-10">
             <div class="absolute top-20 left-10 w-24 h-24 rounded-full bg-white floating" style="animation-delay: 0s;"></div>
             <div class="absolute top-1/3 right-20 w-16 h-16 rounded-full bg-white floating" style="animation-delay: 1s;"></div>
@@ -130,20 +130,23 @@
                 Інтерактивний посібник з ШІ-помічниками, який перетворить вас з новачка на власника прибуткового онлайн-бізнесу
             </p>
             
-            <!-- Countdown timer -->
             <div class="flex justify-center mb-8">
                 <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg flex space-x-4">
                     <div class="countdown-item text-center px-4 py-2 rounded">
-                        <div class="text-3xl font-bold" id="days">03</div>
+                        <div class="text-3xl font-bold" id="days">00</div>
                         <div class="text-sm">дні</div>
                     </div>
                     <div class="countdown-item text-center px-4 py-2 rounded">
-                        <div class="text-3xl font-bold" id="hours">18</div>
+                        <div class="text-3xl font-bold" id="hours">00</div>
                         <div class="text-sm">години</div>
                     </div>
                     <div class="countdown-item text-center px-4 py-2 rounded">
-                        <div class="text-3xl font-bold" id="minutes">45</div>
+                        <div class="text-3xl font-bold" id="minutes">00</div>
                         <div class="text-sm">хвилини</div>
+                    </div>
+                     <div class="countdown-item text-center px-4 py-2 rounded">
+                        <div class="text-3xl font-bold" id="seconds">00</div>
+                        <div class="text-sm">секунди</div>
                     </div>
                 </div>
             </div>
@@ -173,7 +176,6 @@
     </header>
 
     <main class="container mx-auto px-6 py-16">
-        <!-- Stats Section -->
         <section class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             <div class="stat-item p-6 rounded-lg text-center">
                 <div class="text-3xl font-bold text-primary mb-2">0 ₴</div>
@@ -193,11 +195,9 @@
             </div>
         </section>
 
-        <!-- For Whom Section -->
         <section id="for-whom" class="mb-20">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-slate-800">Цей курс ідеально підійде для:</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- ВИПРАВЛЕННЯ 1: Заміна іконки ракети на коробку -->
                 <div class="feature-card bg-white p-6 rounded-xl text-center">
                     <div class="text-4xl mb-4 text-primary">
                         <i class="fas fa-box-open"></i>
@@ -221,7 +221,7 @@
                 </div>
                 <div class="feature-card bg-white p-6 rounded-xl text-center">
                     <div class="text-4xl mb-4 text-primary">
-                        <i class="fas fa-globe-americas"></i>
+                        <i class="fas fa-plane-departure"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">Мандрівників</h3>
                     <p>Хто мріє про бізнес, яким можна керувати з будь-якої точки світу</p>
@@ -229,7 +229,6 @@
             </div>
         </section>
 
-        <!-- AI Demo Section -->
         <section class="ai-demo rounded-2xl p-8 mb-20">
             <div class="max-w-4xl mx-auto">
                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-slate-800">Спробуйте наш ШІ-помічник прямо зараз!</h2>
@@ -237,8 +236,11 @@
                 
                 <div class="bg-white rounded-xl p-6 shadow-md">
                     <div class="flex">
-                        <input type="text" placeholder="Наприклад: екологічні термокружки" class="flex-grow p-4 border border-slate-200 rounded-l-lg focus:ring-2 focus:ring-primary focus:border-transparent">
-                        <button class="bg-primary text-white font-bold px-6 rounded-r-lg">Аналізувати</button>
+                        <input type="text" id="ai-demo-input" placeholder="Наприклад: екологічні термокружки" class="flex-grow p-4 border border-slate-200 rounded-l-lg focus:ring-2 focus:ring-primary focus:border-transparent transition">
+                        <button id="ai-demo-button" class="bg-primary text-white font-bold px-6 rounded-r-lg w-40 transition-all duration-300">
+                            <span id="ai-demo-button-text">Аналізувати</span>
+                            <i id="ai-demo-spinner" class="fas fa-spinner animate-spin-slow hidden"></i>
+                        </button>
                     </div>
                     
                     <div class="mt-6">
@@ -246,15 +248,13 @@
                             <div class="bg-slate-100 rounded-full p-3 mr-3">
                                 <i class="fas fa-robot text-primary"></i>
                             </div>
-                            <div class="bg-slate-50 p-4 rounded-lg flex-grow">
+                            <div class="bg-slate-50 p-4 rounded-lg flex-grow min-h-[110px]">
                                 <p class="font-semibold">ШІ-помічник:</p>
-                                <p class="mt-2">1. Відео-тест: Покажіть, як кружка тримає температуру 8 годин з льодом<br>
-                                2. Еко-переваги: Розкажіть про матеріали та їх вплив на природу<br>
-                                3. Відгуки: Зніміть реакцію людей на дизайн кружок</p>
+                                <div id="ai-demo-output" class="mt-2 text-slate-700">Введіть назву товару вище та натисніть "Аналізувати", щоб отримати ідеї для контенту.</div>
                             </div>
                         </div>
                         
-                        <p class="text-sm text-center text-slate-500 mt-6">Це лише демо-версія. Повний ШІ-помічник доступний у курсі</p>
+                        <p class="text-sm text-center text-slate-500 mt-6">Це лише демо-версія. Повний ШІ-помічник доступний безпосередньо у посібнику</p>
                     </div>
                 </div>
                 
@@ -266,7 +266,6 @@
             </div>
         </section>
 
-        <!-- What's Inside Section -->
         <section id="what-inside" class="mb-20">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-slate-800">Що ви отримаєте після придбання:</h2>
             <p class="text-center text-slate-600 max-w-2xl mx-auto mb-12">Інтерактивний посібник з пошаговою інструкцією та 3 потужними ШІ-помічниками</p>
@@ -294,7 +293,7 @@
                     <ul class="space-y-2 text-slate-600">
                         <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-2"></i> 5+ ідей для Reels/TikTok</li>
                         <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-2"></i> Текст для постів</li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-primary mt=1 mr-2"></i> Хештеги та підписи</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-2"></i> Хештеги та підписи</li>
                     </ul>
                 </div>
                 
@@ -305,14 +304,13 @@
                     <h3 class="text-xl font-bold mb-2">ШІ-Помічник Відповідей</h3>
                     <p class="mb-4">Обробляйте запити клієнтів на автопілоті. Професійні відповіді на складні питання за 5 секунд.</p>
                     <ul class="space-y-2 text-slate-600">
-                        <li class="flex items-start"><i class="fas fa-check-circle text-primary mt=1 mr-2"></i> Повернення товарів</li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-primary mt=1 mr-2"></i> Затримки доставки</li>
-                        <li class="flex items-start"><i class="fas fa-check-circle text-primary mt=1 mr-2"></i> Технічні питання</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-2"></i> Повернення товарів</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-2"></i> Затримки доставки</li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-primary mt-1 mr-2"></i> Технічні питання</li>
                     </ul>
                 </div>
             </div>
             
-            <!-- ВИПРАВЛЕННЯ 2: Заміна 7 кроків на 4 кроки -->
             <div class="mt-12 bg-slate-50 rounded-2xl p-8">
                 <div class="max-w-4xl mx-auto text-center">
                     <h3 class="text-2xl font-bold mb-4">+ Повний інтерактивний посібник з 4 кроків</h3>
@@ -328,7 +326,6 @@
             </div>
         </section>
 
-        <!-- Testimonials Section -->
         <section id="testimonials" class="mb-20">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-slate-800">Реальні результати наших студентів</h2>
             
@@ -392,7 +389,6 @@
             </div>
         </section>
 
-        <!-- Pricing Section -->
         <section id="pricing" class="mb-20">
             <div class="max-w-4xl mx-auto bg-gradient-to-br from-primary to-secondary text-white rounded-3xl overflow-hidden shadow-2xl">
                 <div class="md:flex">
@@ -401,8 +397,8 @@
                         <p class="mb-6 opacity-90">Інвестиція в себе, яка окупиться вже за перші 2-3 продажі</p>
                         
                         <div class="flex items-end mb-6">
-                            <div class="text-5xl font-extrabold">990 ₴</div>
-                            <div class="ml-4 line-through opacity-70">1 490 ₴</div>
+                            <div class="text-5xl font-extrabold">2000 ₴</div>
+                            <div class="ml-4 line-through opacity-70">2990 ₴</div>
                         </div>
                         
                         <ul class="space-y-3 mb-8">
@@ -414,7 +410,7 @@
                             <li class="flex items-center"><i class="fas fa-check-circle mr-3"></i> Бонус: Просування в Instagram</li>
                         </ul>
                         
-                        <a href="#purchase" class="cta-button block w-full bg-accent text-center text-white font-bold py-4 px-8 rounded-lg text-lg mb-4">
+                        <a href="#" class="cta-button block w-full bg-accent text-center text-white font-bold py-4 px-8 rounded-lg text-lg mb-4">
                             Отримати доступ зараз
                         </a>
                         
@@ -463,7 +459,6 @@
             </div>
         </section>
 
-        <!-- FAQ Section -->
         <section id="faq" class="mb-20">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-slate-800">Поширені питання</h2>
             
@@ -471,7 +466,7 @@
                 <div class="faq-item p-6">
                     <div class="flex justify-between items-center cursor-pointer">
                         <h3 class="font-bold text-lg">Чи потрібен стартовий капітал для старту?</h3>
-                        <i class="fas fa-chevron-down text-primary"></i>
+                        <i class="fas fa-chevron-down text-primary transition-transform"></i>
                     </div>
                     <p class="mt-3 text-slate-600 hidden">Ні! Одна з головних переваг дропшипінгу - можливість почати без інвестицій. Ви платите постачальнику тільки після того, як клієнт сплатив замовлення.</p>
                 </div>
@@ -479,7 +474,7 @@
                 <div class="faq-item p-6">
                     <div class="flex justify-between items-center cursor-pointer">
                         <h3 class="font-bold text-lg">Чи підходить курс для повних новачків?</h3>
-                        <i class="fas fa-chevron-down text-primary"></i>
+                        <i class="fas fa-chevron-down text-primary transition-transform"></i>
                     </div>
                     <p class="mt-3 text-slate-600 hidden">Так, курс спеціально розроблений для новачків. Ми почнемо з абсолютних основ і пройдемо кожен крок разом. Навіть якщо ви ніколи не займалися бізнесом, ви зможете запустити свій магазин.</p>
                 </div>
@@ -487,7 +482,7 @@
                 <div class="faq-item p-6">
                     <div class="flex justify-between items-center cursor-pointer">
                         <h3 class="font-bold text-lg">Скільки часу потрібно приділяти на день?</h3>
-                        <i class="fas fa-chevron-down text-primary"></i>
+                        <i class="fas fa-chevron-down text-primary transition-transform"></i>
                     </div>
                     <p class="mt-3 text-slate-600 hidden">На старті рекомендуємо приділяти 1-2 години на день. Після запуску магазину час зменшиться до 30-60 хвилин на день для обробки замовлень та комунікації з клієнтами.</p>
                 </div>
@@ -495,7 +490,7 @@
                 <div class="faq-item p-6">
                     <div class="flex justify-between items-center cursor-pointer">
                         <h3 class="font-bold text-lg">Як довго я матиму доступ до курсу?</h3>
-                        <i class="fas fa-chevron-down text-primary"></i>
+                        <i class="fas fa-chevron-down text-primary transition-transform"></i>
                     </div>
                     <p class="mt-3 text-slate-600 hidden">Довічно! Ви отримуєте доступ назавжди, включаючи всі майбутні оновлення та додаткові матеріали, які ми випускатимемо.</p>
                 </div>
@@ -503,7 +498,7 @@
                 <div class="faq-item p-6">
                     <div class="flex justify-between items-center cursor-pointer">
                         <h3 class="font-bold text-lg">Чи допомагаєте ви з вибором ніші?</h3>
-                        <i class="fas fa-chevron-down text-primary"></i>
+                        <i class="fas fa-chevron-down text-primary transition-transform"></i>
                     </div>
                     <p class="mt-3 text-slate-600 hidden">Так! Ви отримаєте доступ до нашого ШІ-помічника для аналізу ніш, а також список перевірених прибуткових ніш 2025 року. Додатково ви зможете отримати консультацію в закритій спільноті.</p>
                 </div>
@@ -511,7 +506,6 @@
         </section>
     </main>
 
-    <!-- Final CTA Section -->
     <section class="hero-gradient text-white py-16">
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">Готові запустити свій бізнес?</h2>
@@ -578,26 +572,36 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Countdown timer
-            function updateCountdown() {
-                const days = document.getElementById('days');
-                const hours = document.getElementById('hours');
-                const minutes = document.getElementById('minutes');
+
+            // --- Покращений таймер зворотного відліку ---
+            const countdown = () => {
+                const endDate = new Date("Jul 10, 2025 23:59:59").getTime();
+                const now = new Date().getTime();
+                const distance = endDate - now;
                 
-                // Update values (demo)
-                if(days && hours && minutes) {
-                    days.textContent = '02';
-                    hours.textContent = '06';
-                    minutes.textContent = '45';
+                if (distance < 0) {
+                    document.getElementById('days').textContent = '00';
+                    document.getElementById('hours').textContent = '00';
+                    document.getElementById('minutes').textContent = '00';
+                    document.getElementById('seconds').textContent = '00';
+                    return;
                 }
-            }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            };
+            countdown();
+            setInterval(countdown, 1000);
             
-            updateCountdown();
-            setInterval(updateCountdown, 60000);
-            
-            // Scroll to top button
+            // --- Кнопка "Нагору" ---
             const scrollTopButton = document.getElementById('scrollTop');
-            
             window.addEventListener('scroll', () => {
                 if (window.pageYOffset > 500) {
                     scrollTopButton.classList.add('visible');
@@ -605,62 +609,93 @@
                     scrollTopButton.classList.remove('visible');
                 }
             });
+            scrollTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
             
-            scrollTopButton.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-            
-            // FAQ accordion
+            // --- Покращений FAQ-акордеон ---
             const faqItems = document.querySelectorAll('.faq-item');
-            
             faqItems.forEach(item => {
-                const header = item.querySelector('div');
+                const header = item.querySelector('div[class*="cursor-pointer"]');
                 const content = item.querySelector('p');
                 const icon = header.querySelector('i');
                 
                 header.addEventListener('click', () => {
-                    const isOpen = content.classList.contains('hidden');
-                    
-                    // Close all items
-                    faqItems.forEach(i => {
-                        i.querySelector('p').classList.add('hidden');
-                        i.querySelector('i').classList.remove('fa-chevron-up');
-                        i.querySelector('i').classList.add('fa-chevron-down');
-                    });
-                    
-                    // Open current if it was closed
-                    if (isOpen) {
+                    const isHidden = content.classList.contains('hidden');
+                    if (isHidden) {
                         content.classList.remove('hidden');
-                        icon.classList.remove('fa-chevron-down');
-                        icon.classList.add('fa-chevron-up');
+                        icon.classList.add('rotate-180');
+                    } else {
+                        content.classList.add('hidden');
+                        icon.classList.remove('rotate-180');
                     }
                 });
             });
             
-            // Demo AI button
-            const demoButton = document.querySelector('.ai-demo button');
-            const demoInput = document.querySelector('.ai-demo input');
+            // --- ОНОВЛЕНИЙ КОД ДЛЯ РЕАЛЬНОГО ШІ-ДЕМО з Netlify Functions ---
+            const demoButton = document.getElementById('ai-demo-button');
+            const demoInput = document.getElementById('ai-demo-input');
+            const demoOutput = document.getElementById('ai-demo-output');
+            const buttonText = document.getElementById('ai-demo-button-text');
+            const spinner = document.getElementById('ai-demo-spinner');
+
+            // Це спеціальний шлях, який Netlify надає для доступу до функцій.
+            // Він працюватиме і локально (з Netlify Dev), і на опублікованому сайті.
+            const apiUrl = '/.netlify/functions/generate';
             
-            if(demoButton && demoInput) {
-                demoButton.addEventListener('click', () => {
-                    if (demoInput.value.trim() === '') {
-                        demoInput.placeholder = "Будь ласка, введіть товар...";
-                        demoInput.classList.add('border-red-300');
-                    } else {
-                        demoInput.classList.remove('border-red-300');
-                        // In a real scenario, this would call an API
-                    }
-                });
-            }
+            demoButton.addEventListener('click', async () => {
+                const topic = demoInput.value.trim();
+                
+                if (topic === '') {
+                    demoInput.classList.add('border-red-400', 'animate-pulse');
+                    demoInput.placeholder = "Будь ласка, введіть товар...";
+                    setTimeout(() => { demoInput.classList.remove('border-red-400', 'animate-pulse'); }, 2000);
+                    return;
+                }
+                
+                demoInput.classList.remove('border-red-400');
+                
+                buttonText.classList.add('hidden');
+                spinner.classList.remove('hidden');
+                demoButton.disabled = true;
+                demoOutput.innerHTML = 'Генерую ідеї, зачекайте хвилинку... 🧠';
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ topic: topic }),
+                    });
+
+                    if (!response.ok) { throw new Error(`Помилка сервера: ${response.statusText}`); }
+
+                    const data = await response.json();
+                    
+                    const formattedIdeas = data.ideas
+                        .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>') // Робимо текст жирним
+                        .replace(/(\d\.)/g, '<br><br>$1') // Додаємо відступи
+                        .replace(/^\s*<br><br>/, ''); // Прибираємо зайвий відступ на початку
+
+                    demoOutput.innerHTML = formattedIdeas;
+
+                } catch (error) {
+                    console.error('Не вдалося отримати відповідь від ШІ:', error);
+                    demoOutput.innerHTML = '😥 На жаль, сталася помилка. Спробуйте, будь ласка, пізніше.';
+                } finally {
+                    buttonText.classList.remove('hidden');
+                    spinner.classList.add('hidden');
+                    demoButton.disabled = false;
+                }
+            });
             
-            // Smooth scrolling for anchor links
+            // --- Плавний скрол для якірних посилань ---
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
+                    const targetId = this.getAttribute('href');
+                    const target = document.querySelector(targetId);
                     if (target) {
+                        const offsetTop = target.offsetTop - 80; 
                         window.scrollTo({
-                            top: target.offsetTop - 80,
+                            top: offsetTop,
                             behavior: 'smooth'
                         });
                     }
